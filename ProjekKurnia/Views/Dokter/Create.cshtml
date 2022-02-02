@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Dokter
+
+<h3>Create Data Dokter</h3>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="NamaD" class="control-label"></label>
+                <input asp-for="NamaD" class="form-control" />
+                <span asp-validation-for="NamaD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hp" class="control-label"></label>
+                <input asp-for="Hp" class="form-control" />
+                <span asp-validation-for="Hp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alamat" class="control-label"></label>
+                <input asp-for="Alamat" class="form-control" />
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalD" class="control-label"></label>
+                <input asp-for="TanggalD" class="form-control" />
+                <span asp-validation-for="TanggalD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialis" class="control-label"></label>
+                <input asp-for="Specialis" class="form-control" />
+                <span asp-validation-for="Specialis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ijin" class="control-label"></label>
+                <input asp-for="Ijin" class="form-control" />
+                <span asp-validation-for="Ijin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

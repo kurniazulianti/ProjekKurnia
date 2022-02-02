@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjekKurnia.Migrations
 {
-    public partial class Tabel : Migration
+    public partial class RumahSakit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace ProjekKurnia.Migrations
                     Id = table.Column<string>(type: "varchar(767)", nullable: false),
                     NamaD = table.Column<string>(type: "text", nullable: false),
                     Hp = table.Column<string>(type: "text", nullable: false),
-                    alamat = table.Column<string>(type: "text", nullable: false),
+                    Alamat = table.Column<string>(type: "text", nullable: false),
+                    TanggalD = table.Column<DateTime>(type: "datetime", nullable: false),
                     Specialis = table.Column<string>(type: "text", nullable: false),
                     Ijin = table.Column<string>(type: "text", nullable: false)
                 },
@@ -32,7 +33,7 @@ namespace ProjekKurnia.Migrations
                     Jk = table.Column<string>(type: "text", nullable: false),
                     GolD = table.Column<string>(type: "text", nullable: false),
                     TempatL = table.Column<string>(type: "text", nullable: false),
-                    TanggalL = table.Column<string>(type: "text", nullable: false),
+                    TanggalL = table.Column<DateTime>(type: "datetime", nullable: false),
                     NamaIbu = table.Column<string>(type: "text", nullable: false),
                     StatusM = table.Column<string>(type: "text", nullable: false)
                 },

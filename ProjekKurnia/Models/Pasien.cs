@@ -31,7 +31,7 @@ namespace ProjekKurnia.Models
 
         [Required]
         [DisplayName("Tanggal Lahir")]
-        public string TanggalL { get; set; }
+        public DateTime TanggalL { get; set; }
 
         [Required]
         [DisplayName("Nama Ibu")]

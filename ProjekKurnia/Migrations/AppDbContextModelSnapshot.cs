@@ -22,6 +22,10 @@ namespace ProjekKurnia.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
+                    b.Property<string>("Alamat")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Hp")
                         .IsRequired()
                         .HasColumnType("text");
@@ -38,9 +42,8 @@ namespace ProjekKurnia.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("alamat")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("TanggalD")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -72,9 +75,8 @@ namespace ProjekKurnia.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("TanggalL")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("TanggalL")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("TempatL")
                         .IsRequired()

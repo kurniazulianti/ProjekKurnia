@@ -23,7 +23,11 @@ namespace ProjekKurnia.Models
 
         [Required]
         [DisplayName("Alamat")]
-        public string alamat { get; set; }
+        public string Alamat { get; set; }
+
+        [Required]
+        [DisplayName("Tanggal Lahir")]
+        public DateTime TanggalD { get; set; }
 
         [Required]
         [DisplayName("Spesialis")]
