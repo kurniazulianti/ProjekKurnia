@@ -33,9 +33,6 @@ namespace ProjekKurnia.Models
         [DisplayName("Spesialis")]
         public string Specialis { get; set; }
 
-        [Required]
-        [DisplayName("No Ijin Praktek")]
-        public string Ijin { get; set; }
 
 
     }

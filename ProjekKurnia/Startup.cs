@@ -30,6 +30,13 @@ namespace ProjekKurnia
                 o.UseMySQL(Configuration.GetConnectionString("mysql"));
             });
 
+            services.AddAuthentication("CookieAuth")
+                .AddCookie("CookieAuth", options =>
+                {
+                    options.LoginPath = "/Akun/Masuk";
+                }
+            );
+
             services.AddControllersWithViews();
         }
 
@@ -57,7 +64,7 @@ namespace ProjekKurnia
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Dokter}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

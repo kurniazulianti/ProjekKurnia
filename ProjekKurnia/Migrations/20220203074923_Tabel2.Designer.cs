@@ -9,8 +9,8 @@ using ProjekKurnia.Data;
 namespace ProjekKurnia.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220202123616_RumahSakit")]
-    partial class RumahSakit
+    [Migration("20220203074923_Tabel2")]
+    partial class Tabel2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,10 +29,6 @@ namespace ProjekKurnia.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Hp")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Ijin")
                         .IsRequired()
                         .HasColumnType("text");
 

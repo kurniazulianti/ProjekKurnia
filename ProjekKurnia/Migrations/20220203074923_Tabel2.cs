@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjekKurnia.Migrations
 {
-    public partial class RumahSakit : Migration
+    public partial class Tabel2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,8 +16,7 @@ namespace ProjekKurnia.Migrations
                     Hp = table.Column<string>(type: "text", nullable: false),
                     Alamat = table.Column<string>(type: "text", nullable: false),
                     TanggalD = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Specialis = table.Column<string>(type: "text", nullable: false),
-                    Ijin = table.Column<string>(type: "text", nullable: false)
+                    Specialis = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

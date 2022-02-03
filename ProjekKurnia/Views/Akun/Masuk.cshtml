@@ -1,0 +1,36 @@
+﻿@model User;
+
+@{
+    Layout = "_AkunLayout";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.pesan))
+    {
+        <script>
+                alert("@ViewBag.pesan");
+        </script>
+
+    }
+}
+
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Welcome To</h1>
+    <h1 class="h4 text-gray-900 mb-4">harp Hospital</h1>
+</div>
+
+<form asp-action="Masuk" class="user">
+    <div class="form-group">
+        <input asp-for="Username" class="form-control form-control-user" placeholder="Username"/>
+
+    </div>
+    <div class="form-group">
+        <input asp-for="Password" type="password" class="form-control form-control-user" placeholder="Password"/>   
+    </div>
+    <input type="submit" class="btn btn-primary btn-user btn-block" value="Login" />
+    
+</form>
+<hr>
+<div class="text-center">
+    <a class="small" asp-action="Daftar">Create an Account!</a>
+</div>

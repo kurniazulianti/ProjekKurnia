@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjekKurnia.Data;
 using ProjekKurnia.Models;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjekKurnia.Controllers
 {
+    //[Authorize]
     public class DokterController : Controller
     {
         private readonly AppDbContext _context;

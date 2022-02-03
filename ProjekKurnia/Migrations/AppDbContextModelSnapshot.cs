@@ -30,10 +30,6 @@ namespace ProjekKurnia.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Ijin")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("NamaD")
                         .IsRequired()
                         .HasColumnType("text");
