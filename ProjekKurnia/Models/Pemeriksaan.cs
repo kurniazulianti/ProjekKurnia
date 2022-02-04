@@ -31,10 +31,11 @@ namespace ProjekKurnia.Models
 
         [Required]
         [DisplayName("No Pasien")]
-        public Pasien Pasien { get; set; }
+        public string Pasien { get; set; }
 
         [Required]
         [DisplayName("No Dokter")]
-        public Dokter Dokter { get; set; }
+        public string Dokter { get; set; }
+
     }
 }

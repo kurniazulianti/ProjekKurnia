@@ -19,7 +19,8 @@ namespace ProjekKurnia.Data
         public virtual DbSet<Roles> Tb_Roles { get; set; }
         public virtual DbSet<User> Tb_User { get; set; }
         public virtual DbSet<Pasien> Tb_Pasien { get; set; }
-        public virtual DbSet<Pemeriksaan> Tb_Pemeriksaan { get; set; }
+        public virtual DbSet<Db_Pemeriksaan> Tb_Pemeriksaan { get; set; }
 
+        
     }
 }

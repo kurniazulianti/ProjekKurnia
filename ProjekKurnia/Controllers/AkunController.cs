@@ -74,27 +74,29 @@ namespace ProjekKurnia.Controllers
                     var daftar = new List<Claim>
                     {
                         new Claim("Username", cariusername.Username),
-                        new Claim("Roles", cariusername.Roles.Id)
+                        new Claim("Role", cariusername.Roles.Id)
                     };
 
                    
                     await HttpContext.SignInAsync(
                         new ClaimsPrincipal(
-                            new ClaimsIdentity(daftar, "Cookie", "Username", "Roles")
+                            new ClaimsIdentity(daftar, "Cookie", "Username", "Role")
                     ));
 
                     if (cariusername.Roles.Id == "1") 
                     {
-                        return RedirectToAction(controllerName: "Dokter", actionName: "Index");
+
+                        return RedirectToAction(controllerName: "Pasien", actionName: "Index");
+
                     }
 
-                    return RedirectToAction(controllerName: "Home", actionName: "Index"); 
+                    return RedirectToAction(controllerName: "Dokter", actionName: "Index"); 
                 }
 
                 ViewBag.pesan = "Passwordnya Salah";
 
                 return View(datanya);
-            }
+            }   
 
             ViewBag.pesan = "Usernamenya Tidak Ada";
 

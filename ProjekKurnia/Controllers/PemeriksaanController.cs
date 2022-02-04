@@ -9,19 +9,24 @@ using System.Threading.Tasks;
 
 namespace ProjekKurnia.Controllers
 {
-    public class DokterController : Controller
+    [Authorize]
+    public class PemeriksaanController : Controller
     {
         private readonly AppDbContext _context;
+        
+        
 
-        public DokterController(AppDbContext context)
+        public PemeriksaanController(AppDbContext context)
         {
             _context = context;
+
         }
         public IActionResult Index()
         {
-            var data = _context.Tb_Dokter.ToList();
+            var data = _context.Tb_Pemeriksaan.ToList();
             return View(data);
         }
+
 
         public IActionResult Create()
         {
@@ -29,30 +34,32 @@ namespace ProjekKurnia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(DokterForm parameter) 
+
+        public async Task<IActionResult> Create(Pemeriksaan parameter)
         {
-            string[] Id = _context.Tb_Dokter.Select(x => x.Id).ToArray();
+            string[] Id = _context.Tb_Pemeriksaan.Select(x => x.Id).ToArray();
 
             int temp;
             foreach (var item in Id)
             {
                 temp = Int32.Parse(item.Split("-")[1]);
-                parameter.Id = "DK-" + (temp + 1);
+                parameter.Id = "PM-" + (temp + 1);
             }
 
             if (parameter.Id == null)
             {
-                parameter.Id = "DK-1";
+                parameter.Id = "PM-1";
             }
 
-            var get = new Dokter
+            var get = new Db_Pemeriksaan
             {
-                Alamat = parameter.Alamat,
-                Hp = parameter.Hp,
                 Id = parameter.Id,
-                NamaD = parameter.NamaD,
-                Specialis = parameter.Specialis,
-                TanggalD = parameter.TanggalD
+                TanggalB = parameter.TanggalB,
+                Keluhan = parameter.Keluhan,
+                Diagnosis = parameter.Diagnosis,
+                Tindakan = parameter.Tindakan,
+                PasienId = parameter.Pasien,
+                DokterId = parameter.Dokter
             };
 
             if (ModelState.IsValid)
@@ -62,8 +69,7 @@ namespace ProjekKurnia.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            return View(parameter);
+            return View();
         }
     }
 }

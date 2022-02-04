@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjekKurnia.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PasienController : Controller
     {
         private readonly AppDbContext _context;
@@ -31,12 +31,37 @@ namespace ProjekKurnia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Pasien parameter)
+        public async Task<IActionResult> Create(PaisenForm parameter)
         {
+                string[] Id = _context.Tb_Pasien.Select(x => x.Id).ToArray();
+
+                int temp;
+                foreach (var item in Id)
+                {
+                    temp = Int32.Parse(item.Split("-")[1]);
+                    parameter.Id = "PS-" + (temp + 1);
+                }
+
+                if (parameter.Id == null)
+                {
+                    parameter.Id = "PS-1";
+                }
+
+                var get = new Pasien
+                {
+                    Id = parameter.Id,
+                    GolD = parameter.GolD,
+                    Jk = parameter.Jk,
+                    NamaIbu = parameter.NamaIbu,
+                    NamaP = parameter.NamaP,
+                    StatusM = parameter.StatusM,
+                    TanggalL = parameter.TanggalL,
+                    TempatL = parameter.TempatL
+                };
+
             if (ModelState.IsValid)
             {
-                parameter.Id = parameter.TanggalL.Ticks.ToString("x");
-                _context.Add(parameter);
+                _context.Add(get);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Index");

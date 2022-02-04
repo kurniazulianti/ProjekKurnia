@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjekKurnia.Migrations
 {
-    public partial class Tabel2 : Migration
+    public partial class TabelAnti : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,34 +53,7 @@ namespace ProjekKurnia.Migrations
                     table.PrimaryKey("PK_Tb_Roles", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Tb_Pemeriksaan",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "varchar(767)", nullable: false),
-                    TanggalB = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Keluhan = table.Column<string>(type: "text", nullable: false),
-                    Diagnosis = table.Column<string>(type: "text", nullable: false),
-                    Tindakan = table.Column<string>(type: "text", nullable: false),
-                    PasienId = table.Column<string>(type: "varchar(767)", nullable: true),
-                    DokterId = table.Column<string>(type: "varchar(767)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tb_Pemeriksaan", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tb_Pemeriksaan_Tb_Dokter_DokterId",
-                        column: x => x.DokterId,
-                        principalTable: "Tb_Dokter",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Tb_Pemeriksaan_Tb_Pasien_PasienId",
-                        column: x => x.PasienId,
-                        principalTable: "Tb_Pasien",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
+           
 
             migrationBuilder.CreateTable(
                 name: "Tb_User",
@@ -104,16 +77,6 @@ namespace ProjekKurnia.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tb_Pemeriksaan_DokterId",
-                table: "Tb_Pemeriksaan",
-                column: "DokterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tb_Pemeriksaan_PasienId",
-                table: "Tb_Pemeriksaan",
-                column: "PasienId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tb_User_RolesId",
                 table: "Tb_User",
                 column: "RolesId");
@@ -121,8 +84,6 @@ namespace ProjekKurnia.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Tb_Pemeriksaan");
 
             migrationBuilder.DropTable(
                 name: "Tb_User");

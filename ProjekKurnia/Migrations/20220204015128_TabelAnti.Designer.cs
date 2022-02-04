@@ -9,8 +9,8 @@ using ProjekKurnia.Data;
 namespace ProjekKurnia.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220203074923_Tabel2")]
-    partial class Tabel2
+    [Migration("20220204015128_TabelAnti")]
+    partial class TabelAnti
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,40 +85,7 @@ namespace ProjekKurnia.Migrations
                     b.ToTable("Tb_Pasien");
                 });
 
-            modelBuilder.Entity("ProjekKurnia.Models.Pemeriksaan", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<string>("Diagnosis")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DokterId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<string>("Keluhan")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasienId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("TanggalB")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("Tindakan")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DokterId");
-
-                    b.HasIndex("PasienId");
-
-                    b.ToTable("Tb_Pemeriksaan");
-                });
+           
 
             modelBuilder.Entity("ProjekKurnia.Models.Roles", b =>
                 {
@@ -160,20 +127,7 @@ namespace ProjekKurnia.Migrations
                     b.ToTable("Tb_User");
                 });
 
-            modelBuilder.Entity("ProjekKurnia.Models.Pemeriksaan", b =>
-                {
-                    b.HasOne("ProjekKurnia.Models.Dokter", "Dokter")
-                        .WithMany()
-                        .HasForeignKey("DokterId");
-
-                    b.HasOne("ProjekKurnia.Models.Pasien", "Pasien")
-                        .WithMany()
-                        .HasForeignKey("PasienId");
-
-                    b.Navigation("Dokter");
-
-                    b.Navigation("Pasien");
-                });
+            
 
             modelBuilder.Entity("ProjekKurnia.Models.User", b =>
                 {

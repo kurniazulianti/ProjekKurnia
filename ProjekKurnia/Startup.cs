@@ -58,6 +58,8 @@ namespace ProjekKurnia
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace ProjekKurnia.Models
 {
-    public class Dokter
+    public class DokterForm
     {
-
-        [Key]
         [DisplayName("No Dokter")]
         public string Id { get; set; }
 
+        [Required]
         [DisplayName("Nama Dokter")]
         public string NamaD { get; set; }
 
+        [Required]
         [DisplayName("No Hp")]
         public string Hp { get; set; }
 
+        [Required]
         [DisplayName("Alamat")]
         public string Alamat { get; set; }
 
+        [Required]
         [DisplayName("Tanggal Lahir")]
         public DateTime TanggalD { get; set; }
 
+        [Required]
         [DisplayName("Spesialis")]
         public string Specialis { get; set; }
-
-
-
     }
 }
