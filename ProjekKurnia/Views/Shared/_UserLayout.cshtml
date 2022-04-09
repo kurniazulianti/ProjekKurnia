@@ -60,29 +60,33 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                   aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Data Rumah Sakit</span>
+                    <span>Data Pegawai</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="Dokter" asp-action="Index">Dokter</a>
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="Departemen" asp-action="Index">Departemen</a>
+                        <h6 class="collapse-header">Data Pegawai</h6>
+                        <a class="collapse-item" asp-area="User" asp-controller="Dokter" asp-action="Index">Dokter</a>
+                        <a class="collapse-item" asp-area="User" asp-controller="Departemen" asp-action="Index">Departemen</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-folder"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                   aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-table"></i>
                     <span>Data Pasien</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="Pasien" asp-action="Index">Pasien</a>
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="Jalan" asp-action="Index">Rawat Jalan</a>
+                        <h6 class="collapse-header">Data Pasien</h6>
+                        <a class="collapse-item" asp-area="User" asp-controller="Pasien" asp-action="Index">Pasien</a>
+                        <a class="collapse-item" asp-area="User" asp-controller="Jalan" asp-action="Index">Rawat Jalan</a>
                     </div>
                 </div>
             </li>

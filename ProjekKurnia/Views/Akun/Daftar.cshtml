@@ -8,24 +8,76 @@
     <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 </div>
 
-<form asp-action="Daftar" class="user">
+<form asp-action="Daftar" id="form-input" class="user">
     <div class="form-group">
-        <input asp-for="Username" class="form-control form-control-user" placeholder="Username" />
+        <input asp-for="Username" class="wajib form-control form-control-user" placeholder="Username" />
 
     </div>
     <div class="form-group">
-        <input asp-for="Password" type="password" class="form-control form-control-user" placeholder="Password" />
+        <input asp-for="Password" type="password" class="wajib form-control form-control-user" placeholder="Password" />
     </div>
     <div class="form-group">
-        <input asp-for="Name" class="form-control form-control-user" placeholder="Nama Lengkap">
+        <input asp-for="Name" class="wajib form-control form-control-user" placeholder="Nama Lengkap">
     </div>
     <div class="form-group">
-        <input asp-for="Email" type="email" class="form-control form-control-user" placeholder="Email">
+        <input asp-for="Email" type="email" class="wajib form-control form-control-user" placeholder="Email">
     </div>
-    <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" />
-    
+    <div class="form-group">
+        <input id="otp" name="otp" class="form-control form-control-user" placeholder="Kode OTP">
+        <input type="button" id="email-btn" disabled class="btn btn-primary btn-user btn-block" value="Kirim Kode OTP" />
+    </div>
+    <input type="submit" id="btn-submit" disabled class="btn btn-primary btn-user btn-block" value="Register Account" />
+
 </form>
 <hr>
 <div class="text-center">
     <a class="small" asp-action="Masuk">Already have an account? Login!</a>
 </div>
+
+@section Scripts{
+    <script>let ambilNilai = () => {
+            return $("#Email").val();
+        }
+
+        $(document).ready(function () {
+            $("#email-btn").click(function (e) {
+
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Baik",
+                });
+
+                $.post("/Akun/KirimEmailOTP",
+                    {
+                        EmailTujuan: ambilNilai()
+                    },
+                    function (returnya) {
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Gagal" : "Sukses",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "error" : "success",
+                            button: "Baik",
+                            closeOnClickOutside: false,
+                        });
+                    });
+            })
+
+            $('#form-input').on('keyup', function () {
+                let lengkap = $(".wajib")
+                    .filter(
+                        function () {
+                            return $.trim($(this).val()).length == 0
+                        })
+                    .length == 0
+
+                let otpTerisi = $("#otp").val().length > 0
+
+                $('#email-btn').attr('disabled', lengkap ? false : true)
+                $('#btn-submit').attr('disabled', lengkap && otpTerisi ? false : true)
+            })
+        })</script>
+}

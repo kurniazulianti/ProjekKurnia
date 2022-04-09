@@ -75,11 +75,11 @@ namespace ProjekKurnia.Controllers
 
                 if (cariUser.Roles.Id == "1")
                 {
-                    return Redirect("/Admin/Home/Index");
+                    return Redirect("/Admin/Home");
                 }
                 else if (cariUser.Roles.Id == "2")
                 {
-                    return Redirect("/User/Home/Index");
+                    return Redirect("/User/Home");
                 }
 
                 return Redirect("/Masuk");
