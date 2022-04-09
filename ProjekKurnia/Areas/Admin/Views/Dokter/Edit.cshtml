@@ -1,0 +1,63 @@
+﻿@model Dokter
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<h1>Edit</h1>
+
+<h4>Pasien</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NamaD" class="control-label"></label>
+                <input asp-for="NamaD" class="form-control" />
+                <span asp-validation-for="NamaD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hp" class="control-label"></label>
+                <input asp-for="Hp" class="form-control" />
+                <span asp-validation-for="Hp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alamat" class="control-label"></label>
+                <input asp-for="Alamat" class="form-control" />
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempatD" class="control-label"></label>
+                <input asp-for="TempatD" class="form-control" />
+                <span asp-validation-for="TempatD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalD" class="control-label"></label>
+                <input asp-for="TanggalD" class="form-control" />
+                <span asp-validation-for="TanggalD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="hidden" />
+                <img src="@Model.Image" alt="Alternate Text" />
+                <input type="file" name="Foto" class="form-control" accept=".jpg,.png" multiple />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Departemen" class="control-label"></label>
+                <input asp-for="Departemen" class="form-control" />
+                <span asp-validation-for="Departemen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

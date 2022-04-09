@@ -1,0 +1,88 @@
+﻿@model DokDashboard
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="card shadow mb-4">
+    <p>
+        <a asp-areas="Admin" asp-controllers="Dokter" asp-action="Create">Create New</a>
+    </p>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Tabel Dokter</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].NamaD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].Hp)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].Alamat)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].TempatD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].TanggalD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].Image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dokter[0].Departemen)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.dokter)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NamaD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alamat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TempatD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TanggalD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departemen)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

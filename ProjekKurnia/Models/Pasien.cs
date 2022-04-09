@@ -10,17 +10,11 @@ namespace ProjekKurnia.Models
     public class Pasien
     {
         [Key]
-        [DisplayName("No Pasien")]
+        [DisplayName("Kode Pasien")]
         public string Id { get; set; }
 
         [DisplayName("Nama Pasien")]
         public string NamaP { get; set; }
-
-        [DisplayName("Jenis Kelamin")]
-        public string Jk { get; set; }
-
-        [DisplayName("Golongan Darah")]
-        public string GolD { get; set; }
 
         [DisplayName("Tempat Lahir")]
         public string TempatL { get; set; }
@@ -28,10 +22,13 @@ namespace ProjekKurnia.Models
         [DisplayName("Tanggal Lahir")]
         public DateTime TanggalL { get; set; }
 
-        [DisplayName("Nama Ibu")]
-        public string NamaIbu { get; set; }
+        [DisplayName("Alamat")]
+        public string Alamat { get; set; }
 
-        [DisplayName("Status Menikah")]
-        public string StatusM { get; set; }
+        [DisplayName("No Hp")]
+        public string NoHp { get; set; }
+
+        [DisplayName("Foto Pasien")]
+        public string Image { get; set; }
     }
 }

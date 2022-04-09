@@ -17,36 +17,17 @@ namespace ProjekKurnia.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.13");
 
-            modelBuilder.Entity("ProjekKurnia.Models.Db_Pemeriksaan", b =>
+            modelBuilder.Entity("ProjekKurnia.Models.Departemen", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("Diagnosis")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DokterId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<string>("Keluhan")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasienId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("TanggalB")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("Tindakan")
+                    b.Property<string>("NamaDep")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DokterId");
-
-                    b.HasIndex("PasienId");
-
-                    b.ToTable("Tb_Pemeriksaan");
+                    b.ToTable("Tb_Departemen");
                 });
 
             modelBuilder.Entity("ProjekKurnia.Models.Dokter", b =>
@@ -57,21 +38,86 @@ namespace ProjekKurnia.Migrations
                     b.Property<string>("Alamat")
                         .HasColumnType("text");
 
+                    b.Property<string>("Departemen")
+                        .HasColumnType("text");
+
                     b.Property<string>("Hp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("NamaD")
                         .HasColumnType("text");
 
-                    b.Property<string>("Specialis")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("TanggalD")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("TempatD")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Tb_Dokter");
+                });
+
+            modelBuilder.Entity("ProjekKurnia.Models.Inap", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("BiayaInap")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DepartemenId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("DokterId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("PasienId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("Ruangan")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartemenId");
+
+                    b.HasIndex("DokterId");
+
+                    b.HasIndex("PasienId");
+
+                    b.ToTable("Tb_RawatInap");
+                });
+
+            modelBuilder.Entity("ProjekKurnia.Models.Jalan", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("Biaya")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DepartemenId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("DokterId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("PasienId")
+                        .HasColumnType("varchar(767)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartemenId");
+
+                    b.HasIndex("DokterId");
+
+                    b.HasIndex("PasienId");
+
+                    b.ToTable("Tb_RawatJalan");
                 });
 
             modelBuilder.Entity("ProjekKurnia.Models.Pasien", b =>
@@ -79,19 +125,16 @@ namespace ProjekKurnia.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("GolD")
+                    b.Property<string>("Alamat")
                         .HasColumnType("text");
 
-                    b.Property<string>("Jk")
-                        .HasColumnType("text");
-
-                    b.Property<string>("NamaIbu")
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("NamaP")
                         .HasColumnType("text");
 
-                    b.Property<string>("StatusM")
+                    b.Property<string>("NoHp")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("TanggalL")
@@ -145,19 +188,46 @@ namespace ProjekKurnia.Migrations
                     b.ToTable("Tb_User");
                 });
 
-            modelBuilder.Entity("ProjekKurnia.Models.Db_Pemeriksaan", b =>
+            modelBuilder.Entity("ProjekKurnia.Models.Inap", b =>
                 {
-                    b.HasOne("ProjekKurnia.Models.Dokter", "DokterFk")
+                    b.HasOne("ProjekKurnia.Models.Departemen", "Departemen")
+                        .WithMany()
+                        .HasForeignKey("DepartemenId");
+
+                    b.HasOne("ProjekKurnia.Models.Dokter", "Dokter")
                         .WithMany()
                         .HasForeignKey("DokterId");
 
-                    b.HasOne("ProjekKurnia.Models.Pasien", "PasienFk")
+                    b.HasOne("ProjekKurnia.Models.Pasien", "Pasien")
                         .WithMany()
                         .HasForeignKey("PasienId");
 
-                    b.Navigation("DokterFk");
+                    b.Navigation("Departemen");
 
-                    b.Navigation("PasienFk");
+                    b.Navigation("Dokter");
+
+                    b.Navigation("Pasien");
+                });
+
+            modelBuilder.Entity("ProjekKurnia.Models.Jalan", b =>
+                {
+                    b.HasOne("ProjekKurnia.Models.Departemen", "Departemen")
+                        .WithMany()
+                        .HasForeignKey("DepartemenId");
+
+                    b.HasOne("ProjekKurnia.Models.Dokter", "Dokter")
+                        .WithMany()
+                        .HasForeignKey("DokterId");
+
+                    b.HasOne("ProjekKurnia.Models.Pasien", "Pasien")
+                        .WithMany()
+                        .HasForeignKey("PasienId");
+
+                    b.Navigation("Departemen");
+
+                    b.Navigation("Dokter");
+
+                    b.Navigation("Pasien");
                 });
 
             modelBuilder.Entity("ProjekKurnia.Models.User", b =>

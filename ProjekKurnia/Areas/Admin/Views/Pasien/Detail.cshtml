@@ -1,0 +1,60 @@
+﻿@model Pasien
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pasien</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NamaP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NamaP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TempatL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TempatL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TanggalL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TanggalL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NoHp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NoHp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

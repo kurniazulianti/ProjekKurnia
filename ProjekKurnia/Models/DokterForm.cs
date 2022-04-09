@@ -9,7 +9,7 @@ namespace ProjekKurnia.Models
 {
     public class DokterForm
     {
-        [DisplayName("No Dokter")]
+        [DisplayName("Kode Dokter")]
         public string Id { get; set; }
 
         [Required]
@@ -25,11 +25,29 @@ namespace ProjekKurnia.Models
         public string Alamat { get; set; }
 
         [Required]
+        [DisplayName("Tempat Lahir")]
+        public string TempatD { get; set; }
+
+        [Required]
         [DisplayName("Tanggal Lahir")]
         public DateTime TanggalD { get; set; }
 
         [Required]
-        [DisplayName("Spesialis")]
-        public string Specialis { get; set; }
+        [DisplayName("Foto Dokter")]
+        public string Image { get; set; }
+
+        [Required]
+        [DisplayName("Kode Departemen")]
+        public Departemen Departemen { get; set; }
+    }
+
+    public class DokDashboard
+    {
+        public List<Dokter> dokter { get; set; }
+
+        public DokDashboard()
+        {
+            dokter = new List<Dokter>();
+        }
     }
 }

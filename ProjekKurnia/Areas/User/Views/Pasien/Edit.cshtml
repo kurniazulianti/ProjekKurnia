@@ -1,0 +1,56 @@
+﻿@model Pasien
+
+@{
+    Layout = "_UserLayout";
+}
+
+<h1>Edit</h1>
+
+<h4>Pasien</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NamaP" class="control-label"></label>
+                <input asp-for="NamaP" class="form-control" />
+                <span asp-validation-for="NamaP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempatL" class="control-label"></label>
+                <input asp-for="TempatL" class="form-control" />
+                <span asp-validation-for="TempatL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalL" class="control-label"></label>
+                <input asp-for="TanggalL" class="form-control" />
+                <span asp-validation-for="TanggalL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alamat" class="control-label"></label>
+                <input asp-for="Alamat" class="form-control" />
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoHp" class="control-label"></label>
+                <input asp-for="NoHp" class="form-control" />
+                <span asp-validation-for="NoHp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="hidden" />
+                <img src="@Model.Image" alt="Alternate Text" />
+                <input type="file" name="Foto" class="form-control" accept=".jpg,.png" multiple />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

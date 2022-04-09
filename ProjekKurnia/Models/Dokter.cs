@@ -11,7 +11,7 @@ namespace ProjekKurnia.Models
     {
 
         [Key]
-        [DisplayName("No Dokter")]
+        [DisplayName("Kode Dokter")]
         public string Id { get; set; }
 
         [DisplayName("Nama Dokter")]
@@ -23,11 +23,17 @@ namespace ProjekKurnia.Models
         [DisplayName("Alamat")]
         public string Alamat { get; set; }
 
+        [DisplayName("Tempat Lahir")]
+        public string TempatD { get; set; }
+
         [DisplayName("Tanggal Lahir")]
         public DateTime TanggalD { get; set; }
 
-        [DisplayName("Spesialis")]
-        public string Specialis { get; set; }
+        [DisplayName("Foto Dokter")]
+        public string Image { get; set; }
+
+        [DisplayName("Kode Departemen")]
+        public string Departemen { get; set; }
 
 
 

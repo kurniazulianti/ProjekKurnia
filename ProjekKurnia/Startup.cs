@@ -6,6 +6,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjekKurnia.Data;
+using ProjekKurnia.Models;
+using ProjekKurnia.Repositories.AkunRepository;
+using ProjekKurnia.Repositories.DepartemenRepository;
+using ProjekKurnia.Repositories.DokterRepository;
+using ProjekKurnia.Repositories.JalanRepository;
+using ProjekKurnia.Repositories.PasienRepository;
+using ProjekKurnia.Services;
+using ProjekKurnia.Services.AkunService;
+using ProjekKurnia.Services.DepartemenService;
+using ProjekKurnia.Services.DokterService;
+using ProjekKurnia.Services.JalanService;
+using ProjekKurnia.Services.PasienService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +49,28 @@ namespace ProjekKurnia
                 }
             );
 
+            // daftarkan repo dan service disini
+            // repository
+            services.AddScoped<IDepartemenRepository, DepartemenRepository>();
+            services.AddScoped<IPasienRepository, PasienRepository>();
+            services.AddScoped<IDokterRepository, DokterRepository>();
+            services.AddScoped<IJalanRepository, JalanRepository>();
+            services.AddScoped<IAkunRepository, AkunRepository>();
+
+            // service
+            services.AddScoped<IDepartemenService, DepartemenService>();
+            services.AddScoped<IPasienService, PasienService>();
+            services.AddScoped<IDokterService, DokterService>();
+            services.AddScoped<IJalanService, JalanService>();
+            services.AddScoped<IAkunService, AkunService>();
+
+            // ambil data dari appsetting.json, dan set datanya di Models/Email
+            services.Configure<Email>(Configuration.GetSection("AturEmail"));
+
+            // daftarkan fileService
+            services.AddTransient<FileService>();
+            services.AddTransient<EmailService>();
+
             services.AddControllersWithViews();
         }
 
@@ -54,6 +88,7 @@ namespace ProjekKurnia
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -64,6 +99,16 @@ namespace ProjekKurnia
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                    name: "AreaAdmin",
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+                    );
+                endpoints.MapAreaControllerRoute(
+                    name: "AreaUser",
+                    areaName: "User",
+                    pattern: "User/{controller=Home}/{action=Index}/{id?}"
+                    );
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

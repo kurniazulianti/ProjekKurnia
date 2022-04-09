@@ -12,12 +12,19 @@ namespace ProjekKurnia.Helper
         {
             if (user.Identity.IsAuthenticated)
             {
-                return user.Claims.FirstOrDefault(
-                    bebas =>
-                    bebas.Type == "Username"
-                    )?
-                    .Value ?? string.Empty;
+                return user.Claims.FirstOrDefault(x => x.Type == "Username")?.Value ?? string.Empty;
             }
+
+            return string.Empty;
+        }
+
+        public static string GetRole(this ClaimsPrincipal user)
+        {
+            if (user.Identity.IsAuthenticated)
+            {
+                return user.Claims.FirstOrDefault(x => x.Type == "Role")?.Value ?? string.Empty;
+            }
+
             return string.Empty;
         }
     }

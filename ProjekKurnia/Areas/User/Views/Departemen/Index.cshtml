@@ -1,0 +1,52 @@
+﻿@model DepDashboard
+
+@{
+    Layout = "_UserLayout";
+
+}
+
+<div class="card shadow mb-4">
+    <div>
+        <a asp-action="Create">Create New</a>
+    </div>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Departemen</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dep[0].Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.dep[0].NamaDep)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.dep)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NamaDep)
+                            </td>
+                            <td>
+                                <a asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

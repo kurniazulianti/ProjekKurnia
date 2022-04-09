@@ -9,20 +9,12 @@ namespace ProjekKurnia.Models
 {
     public class PaisenForm
     {
-        [DisplayName("No Pasien")]
+        [DisplayName("Kode Pasien")]
         public string Id { get; set; }
 
         [Required]
         [DisplayName("Nama Pasien")]
         public string NamaP { get; set; }
-
-        [Required]
-        [DisplayName("Jenis Kelamin")]
-        public string Jk { get; set; }
-
-        [Required]
-        [DisplayName("Golongan Darah")]
-        public string GolD { get; set; }
 
         [Required]
         [DisplayName("Tempat Lahir")]
@@ -33,11 +25,27 @@ namespace ProjekKurnia.Models
         public DateTime TanggalL { get; set; }
 
         [Required]
-        [DisplayName("Nama Ibu")]
-        public string NamaIbu { get; set; }
+        [DisplayName("Alamat")]
+        public string Alamat { get; set; }
 
         [Required]
-        [DisplayName("Status Menikah")]
-        public string StatusM { get; set; }
+        [DisplayName("No Hp")]
+        public string NoHp { get; set; }
+
+        [Required]
+        [DisplayName("Foto Pasien")]
+        public string Image { get; set; }
+    }
+
+    public class PasDashboard
+    {
+        public List<Pasien> pas { get; set; }
+        public List<Dokter> dok { get; set; }
+
+        public PasDashboard()
+        {
+            pas = new List<Pasien>();
+            dok = new List<Dokter>();
+        }
     }
 }
