@@ -38,7 +38,28 @@ insert  into `__efmigrationshistory`(`MigrationId`,`ProductVersion`) values
 ('20220204114523_Tb_Pemeriksaan','5.0.13'),
 ('20220204120138_Tb_Pemeriksaan','5.0.13'),
 ('20220204120754_Tb_Pemeriksaan','5.0.13'),
-('20220204121316_Tb_Pemeriksaan','5.0.13');
+('20220204121316_Tb_Pemeriksaan','5.0.13'),
+('20220407190507_TabelBaru','5.0.13'),
+('20220407190954_TabelAnti','5.0.13'),
+('20220409200512_TabelTabel','5.0.13');
+
+/*Table structure for table `tb_departemen` */
+
+DROP TABLE IF EXISTS `tb_departemen`;
+
+CREATE TABLE `tb_departemen` (
+  `Id` varchar(767) NOT NULL,
+  `NamaDep` text DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tb_departemen` */
+
+insert  into `tb_departemen`(`Id`,`NamaDep`) values 
+('DP-1','Jantung'),
+('DP-2','Paru-Paru'),
+('DP-3','Bedah'),
+('DP-4','Umum');
 
 /*Table structure for table `tb_dokter` */
 
@@ -49,16 +70,18 @@ CREATE TABLE `tb_dokter` (
   `NamaD` text DEFAULT NULL,
   `Hp` text DEFAULT NULL,
   `Alamat` text DEFAULT NULL,
+  `TempatD` text DEFAULT NULL,
   `TanggalD` datetime NOT NULL,
-  `Specialis` text DEFAULT NULL,
+  `Image` text DEFAULT NULL,
+  `Departemen` text DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_dokter` */
 
-insert  into `tb_dokter`(`Id`,`NamaD`,`Hp`,`Alamat`,`TanggalD`,`Specialis`) values 
-('DK-1','Kurnia','08562858599','Banyumas','2002-07-22 18:21:00','Saraf'),
-('DK-2','Sitompul','08562858598','Bandung','2000-07-28 19:57:00','Jantung');
+insert  into `tb_dokter`(`Id`,`NamaD`,`Hp`,`Alamat`,`TempatD`,`TanggalD`,`Image`,`Departemen`) values 
+('DK-1','Kurnia','08562858597','Banyumas','Banyumas','2022-03-28 03:18:00','/namaFoldernya/twenty-five-twenty-one-episode-15-back-do.jpg','DP-2'),
+('DK-2','Sitompul','08562858599','Bandung','Banyumas','2022-04-02 03:19:00','/namaFoldernya/600xauto-result-1032-photo.jpg','DP-3');
 
 /*Table structure for table `tb_pasien` */
 
@@ -67,43 +90,56 @@ DROP TABLE IF EXISTS `tb_pasien`;
 CREATE TABLE `tb_pasien` (
   `Id` varchar(767) NOT NULL,
   `NamaP` text DEFAULT NULL,
-  `Jk` text DEFAULT NULL,
-  `GolD` text DEFAULT NULL,
   `TempatL` text DEFAULT NULL,
   `TanggalL` datetime NOT NULL,
-  `NamaIbu` text DEFAULT NULL,
-  `StatusM` text DEFAULT NULL,
+  `Alamat` text DEFAULT NULL,
+  `NoHp` text DEFAULT NULL,
+  `Image` text DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_pasien` */
 
-insert  into `tb_pasien`(`Id`,`NamaP`,`Jk`,`GolD`,`TempatL`,`TanggalL`,`NamaIbu`,`StatusM`) values 
-('PS-1','Edwar','Laki-Laki','O','Sibolga','2001-08-18 18:09:00','Nisjuarni Bugis','Belum Menikah');
+insert  into `tb_pasien`(`Id`,`NamaP`,`TempatL`,`TanggalL`,`Alamat`,`NoHp`,`Image`) values 
+('PS-1','Anti','Banyumas','2022-03-27 03:20:00','Banyumas','085289823481','/namaFoldernya/PXL_20220312_102519343.MP.jpg'),
+('PS-2','Edwar','Sibolga','2022-03-31 03:20:00','Bandung','0885627615246','/namaFoldernya/PXL_20220312_112858318.MP.jpg');
 
-/*Table structure for table `tb_pemeriksaan` */
+/*Table structure for table `tb_rawatinap` */
 
-DROP TABLE IF EXISTS `tb_pemeriksaan`;
+DROP TABLE IF EXISTS `tb_rawatinap`;
 
-CREATE TABLE `tb_pemeriksaan` (
+CREATE TABLE `tb_rawatinap` (
   `Id` varchar(767) NOT NULL,
-  `TanggalB` datetime NOT NULL,
-  `Keluhan` text DEFAULT NULL,
-  `Diagnosis` text DEFAULT NULL,
-  `Tindakan` text DEFAULT NULL,
-  `PasienId` varchar(767) DEFAULT NULL,
-  `DokterId` varchar(767) DEFAULT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `IX_Tb_Pemeriksaan_DokterId` (`DokterId`),
-  KEY `IX_Tb_Pemeriksaan_PasienId` (`PasienId`),
-  CONSTRAINT `FK_Tb_Pemeriksaan_Tb_Dokter_DokterId` FOREIGN KEY (`DokterId`) REFERENCES `tb_dokter` (`Id`),
-  CONSTRAINT `FK_Tb_Pemeriksaan_Tb_Pasien_PasienId` FOREIGN KEY (`PasienId`) REFERENCES `tb_pasien` (`Id`)
+  `Pasien` text DEFAULT NULL,
+  `Dokter` text DEFAULT NULL,
+  `Departemen` text DEFAULT NULL,
+  `Ruangan` text DEFAULT NULL,
+  `BiayaInap` text DEFAULT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `tb_pemeriksaan` */
+/*Data for the table `tb_rawatinap` */
 
-insert  into `tb_pemeriksaan`(`Id`,`TanggalB`,`Keluhan`,`Diagnosis`,`Tindakan`,`PasienId`,`DokterId`) values 
-('PM-1','2022-02-04 19:19:00','Batuk, Pusing','Demam','Obat','PS-1','DK-1');
+insert  into `tb_rawatinap`(`Id`,`Pasien`,`Dokter`,`Departemen`,`Ruangan`,`BiayaInap`) values 
+('RN-1','PS-2','DK-2','D-3','IGD','300000');
+
+/*Table structure for table `tb_rawatjalan` */
+
+DROP TABLE IF EXISTS `tb_rawatjalan`;
+
+CREATE TABLE `tb_rawatjalan` (
+  `Id` varchar(767) NOT NULL,
+  `Pasien` text DEFAULT NULL,
+  `Dokter` text DEFAULT NULL,
+  `Departemen` text DEFAULT NULL,
+  `Biaya` text DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tb_rawatjalan` */
+
+insert  into `tb_rawatjalan`(`Id`,`Pasien`,`Dokter`,`Departemen`,`Biaya`) values 
+('RJ-1','PS-1','DK-1','DP-1','50000');
 
 /*Table structure for table `tb_roles` */
 
@@ -139,8 +175,8 @@ CREATE TABLE `tb_user` (
 /*Data for the table `tb_user` */
 
 insert  into `tb_user`(`Username`,`Password`,`Name`,`Email`,`RolesId`) values 
-('anti','kurnia','Zulianti','kurnia22@gmail.com','1'),
-('kurnia','zuli','Kurnia Zulianti','kurniazulianti22@gmail.com','2');
+('Anti','nia','Zulianti Anti','kurniazul22@gmail.com','2'),
+('Kurnia','zuli','Kurnia Zulianti','kurniazulianti22@gmail.com','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
