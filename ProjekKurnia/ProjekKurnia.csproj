@@ -1818,8 +1818,4 @@
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.10" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\API\" />
-  </ItemGroup>
-
 </Project>

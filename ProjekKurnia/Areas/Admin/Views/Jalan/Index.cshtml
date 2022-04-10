@@ -5,9 +5,6 @@
 }
 
 <div class="card shadow mb-4">
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Tabel Rawat Jalan</h6>
     </div>
@@ -20,9 +17,6 @@
                             @Html.DisplayNameFor(item => item.jalan[0].Id)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(item => item.jalan[0].Biaya)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(item => item.jalan[0].Pasien)
                         </th>
                         <th>
@@ -30,6 +24,9 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(item => item.jalan[0].Departemen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.jalan[0].Biaya)
                         </th>
                         <th>
                             Action

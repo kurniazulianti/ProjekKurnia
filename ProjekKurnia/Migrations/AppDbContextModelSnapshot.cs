@@ -69,25 +69,19 @@ namespace ProjekKurnia.Migrations
                     b.Property<string>("BiayaInap")
                         .HasColumnType("text");
 
-                    b.Property<string>("DepartemenId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Departemen")
+                        .HasColumnType("text");
 
-                    b.Property<string>("DokterId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Dokter")
+                        .HasColumnType("text");
 
-                    b.Property<string>("PasienId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Pasien")
+                        .HasColumnType("text");
 
                     b.Property<string>("Ruangan")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartemenId");
-
-                    b.HasIndex("DokterId");
-
-                    b.HasIndex("PasienId");
 
                     b.ToTable("Tb_RawatInap");
                 });
@@ -100,22 +94,16 @@ namespace ProjekKurnia.Migrations
                     b.Property<string>("Biaya")
                         .HasColumnType("text");
 
-                    b.Property<string>("DepartemenId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Departemen")
+                        .HasColumnType("text");
 
-                    b.Property<string>("DokterId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Dokter")
+                        .HasColumnType("text");
 
-                    b.Property<string>("PasienId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<string>("Pasien")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartemenId");
-
-                    b.HasIndex("DokterId");
-
-                    b.HasIndex("PasienId");
 
                     b.ToTable("Tb_RawatJalan");
                 });
@@ -186,48 +174,6 @@ namespace ProjekKurnia.Migrations
                     b.HasIndex("RolesId");
 
                     b.ToTable("Tb_User");
-                });
-
-            modelBuilder.Entity("ProjekKurnia.Models.Inap", b =>
-                {
-                    b.HasOne("ProjekKurnia.Models.Departemen", "Departemen")
-                        .WithMany()
-                        .HasForeignKey("DepartemenId");
-
-                    b.HasOne("ProjekKurnia.Models.Dokter", "Dokter")
-                        .WithMany()
-                        .HasForeignKey("DokterId");
-
-                    b.HasOne("ProjekKurnia.Models.Pasien", "Pasien")
-                        .WithMany()
-                        .HasForeignKey("PasienId");
-
-                    b.Navigation("Departemen");
-
-                    b.Navigation("Dokter");
-
-                    b.Navigation("Pasien");
-                });
-
-            modelBuilder.Entity("ProjekKurnia.Models.Jalan", b =>
-                {
-                    b.HasOne("ProjekKurnia.Models.Departemen", "Departemen")
-                        .WithMany()
-                        .HasForeignKey("DepartemenId");
-
-                    b.HasOne("ProjekKurnia.Models.Dokter", "Dokter")
-                        .WithMany()
-                        .HasForeignKey("DokterId");
-
-                    b.HasOne("ProjekKurnia.Models.Pasien", "Pasien")
-                        .WithMany()
-                        .HasForeignKey("PasienId");
-
-                    b.Navigation("Departemen");
-
-                    b.Navigation("Dokter");
-
-                    b.Navigation("Pasien");
                 });
 
             modelBuilder.Entity("ProjekKurnia.Models.User", b =>

@@ -10,12 +10,14 @@ using ProjekKurnia.Models;
 using ProjekKurnia.Repositories.AkunRepository;
 using ProjekKurnia.Repositories.DepartemenRepository;
 using ProjekKurnia.Repositories.DokterRepository;
+using ProjekKurnia.Repositories.InapRepository;
 using ProjekKurnia.Repositories.JalanRepository;
 using ProjekKurnia.Repositories.PasienRepository;
 using ProjekKurnia.Services;
 using ProjekKurnia.Services.AkunService;
 using ProjekKurnia.Services.DepartemenService;
 using ProjekKurnia.Services.DokterService;
+using ProjekKurnia.Services.InapService;
 using ProjekKurnia.Services.JalanService;
 using ProjekKurnia.Services.PasienService;
 using System;
@@ -56,6 +58,7 @@ namespace ProjekKurnia
             services.AddScoped<IDokterRepository, DokterRepository>();
             services.AddScoped<IJalanRepository, JalanRepository>();
             services.AddScoped<IAkunRepository, AkunRepository>();
+            services.AddScoped<IInapRepository, InapRepository>();
 
             // service
             services.AddScoped<IDepartemenService, DepartemenService>();
@@ -63,6 +66,7 @@ namespace ProjekKurnia
             services.AddScoped<IDokterService, DokterService>();
             services.AddScoped<IJalanService, JalanService>();
             services.AddScoped<IAkunService, AkunService>();
+            services.AddScoped<IInapService, InapService>();
 
             // ambil data dari appsetting.json, dan set datanya di Models/Email
             services.Configure<Email>(Configuration.GetSection("AturEmail"));

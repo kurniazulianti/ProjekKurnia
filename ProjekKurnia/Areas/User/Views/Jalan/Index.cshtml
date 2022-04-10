@@ -20,9 +20,6 @@
                             @Html.DisplayNameFor(item => item.jalan[0].Id)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(item => item.jalan[0].Biaya)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(item => item.jalan[0].Pasien)
                         </th>
                         <th>
@@ -30,6 +27,9 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(item => item.jalan[0].Departemen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.jalan[0].Biaya)
                         </th>
                         <th>
                             Action
@@ -44,9 +44,6 @@
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Biaya)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Pasien)
                         </td>
                         <td>
@@ -54,6 +51,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Departemen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Biaya)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

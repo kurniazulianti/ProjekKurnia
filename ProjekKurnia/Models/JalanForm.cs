@@ -13,20 +13,22 @@ namespace ProjekKurnia.Models
         public string Id { get; set; }
 
         [Required]
-        [DisplayName("Biaya Perawatan")]
-        public string Biaya { get; set; }
-
-        [Required]
         [DisplayName("Kode Pasien")]
-        public string Pasien { get; set; }
+        public Pasien Pasien { get; set; }
 
         [Required]
         [DisplayName("Kode Dokter")]
-        public string Dokter { get; set; }
+        public Dokter Dokter { get; set; }
 
         [Required]
         [DisplayName("Kode Departemen")]
-        public string Departemen { get; set; }
+        public Departemen Departemen { get; set; }
+
+        [Required]
+        [DisplayName("Biaya Perawatan")]
+        public string Biaya { get; set; }
+
+        
     }
 
     public class JalanDashboard

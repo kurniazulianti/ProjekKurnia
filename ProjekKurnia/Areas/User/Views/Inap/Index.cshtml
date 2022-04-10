@@ -1,0 +1,76 @@
+﻿@model InapDashboard
+
+@{
+    Layout = "_UserLayout";
+}
+
+<div class="card shadow mb-4">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Tabel Rawat Jalan</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].Pasien)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].Dokter)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].Departemen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].Ruangan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(item => item.inap[0].BiayaInap)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.inap)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pasien)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dokter)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departemen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ruangan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BiayaInap)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

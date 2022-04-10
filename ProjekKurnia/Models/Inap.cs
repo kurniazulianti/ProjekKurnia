@@ -13,19 +13,20 @@ namespace ProjekKurnia.Models
         [DisplayName("Kode Rawat Inap")]
         public string Id { get; set; }
 
+        [DisplayName("Kode Pasien")]
+        public string Pasien { get; set; }
+
+        [DisplayName("Kode Dokter")]
+        public string Dokter { get; set; }
+
+        [DisplayName("Kode Departemen")]
+        public string Departemen { get; set; }
+
         [DisplayName("Jenis Ruangan")]
         public string Ruangan { get; set; }
 
         [DisplayName("Biaya Rawat Inap")]
         public string BiayaInap { get; set; }
 
-        [DisplayName("Kode Pasien")]
-        public Pasien Pasien { get; set; }
-
-        [DisplayName("Kode Dokter")]
-        public Dokter Dokter { get; set; }
-
-        [DisplayName("Kode Departemen")]
-        public Departemen Departemen { get; set; }
     }
 }

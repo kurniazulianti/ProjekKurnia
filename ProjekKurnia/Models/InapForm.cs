@@ -12,6 +12,19 @@ namespace ProjekKurnia.Models
         [DisplayName("Kode Rawat Inap")]
         public string Id { get; set; }
 
+
+        [Required]
+        [DisplayName("Kode Pasien")]
+        public Pasien Pasien { get; set; }
+
+        [Required]
+        [DisplayName("Kode Dokter")]
+        public Dokter Dokter { get; set; }
+
+        [Required]
+        [DisplayName("Kode Departemen")]
+        public Departemen Departemen { get; set; }
+
         [Required]
         [DisplayName("Jenis Ruangan")]
         public string Ruangan { get; set; }
@@ -20,16 +33,15 @@ namespace ProjekKurnia.Models
         [DisplayName("Biaya Rawat Inap")]
         public string BiayaInap { get; set; }
 
-        [Required]
-        [DisplayName("Kode Pasien")]
-        public string Pasien { get; set; }
+    }
 
-        [Required]
-        [DisplayName("Kode Dokter")]
-        public string Dokter { get; set; }
+    public class InapDashboard
+    {
+        public List<Inap> inap { get; set; }
 
-        [Required]
-        [DisplayName("Kode Departemen")]
-        public string Departemen { get; set; }
+        public InapDashboard()
+        {
+            inap = new List<Inap>();
+        }
     }
 }

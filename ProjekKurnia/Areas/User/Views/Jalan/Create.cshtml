@@ -13,11 +13,6 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Biaya" class="control-label"></label>
-                <input asp-for="Biaya" class="form-control" />
-                <span asp-validation-for="Biaya" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Pasien" class="control-label"></label>
                 <input asp-for="Pasien" class="form-control" />
                 <span asp-validation-for="Pasien" class="text-danger"></span>
@@ -31,6 +26,11 @@
                 <label asp-for="Departemen" class="control-label"></label>
                 <input asp-for="Departemen" class="form-control" />
                 <span asp-validation-for="Departemen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Biaya" class="control-label"></label>
+                <input asp-for="Biaya" class="form-control" />
+                <span asp-validation-for="Biaya" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
